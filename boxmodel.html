@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Box Model Demo</title>
+    <style>
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        .box-model-demo {
+            /* 1. Content Area Sizing */
+            width: 300px;
+            height: 150px;
+            background-color: #e0f7fa;
+
+            /* 2. Padding (Space inside the border) */
+            padding: 20px;
+
+            /* 3. Border (Surrounds padding & content) */
+            border: 5px solid #006064;
+
+            /* 4. Margin (Space outside the border) */
+            margin: 40px auto;
+
+            /* Styling text for demonstration */
+            font-family: sans-serif;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="box-model-demo">
+        Content Area (300px × 150px)
+    </div>
+
+</body>
+</html>

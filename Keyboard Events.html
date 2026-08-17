@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Portal</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-color: #f4f5f7;
+        }
+
+        .navbar {
+            background-color: greenyellow;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 32px;
+            width: 100%;
+        }
+
+        .nav-brand {
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #333;
+            transition: color 0.2s ease;
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .portal-card {
+            background-color: white;
+            border-radius: 16px;
+            padding: 40px;
+            width: 100%;
+            max-width: 520px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .header p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .form-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .input-box {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+        }
+
+        input {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 12px 14px;
+            font-size: 0.95rem;
+            width: 100%;
+        }
+
+        input:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.3);
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        button {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .btn-submit { color: white; }
+        .btn-reset { color: white; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-brand">EduPortal</div>
+        <ul class="nav-links">
+            <li><a href="#" class="active">Register</a></li>
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Directory</a></li>
+            <li><a href="#">Support</a></li>
+        </ul>
+    </nav>
+
+    <main class="main-content">
+        <div class="portal-card">
+            <div class="header">
+                <h1>Student Registration</h1>
+                <p>Please fill in your details below</p>
+            </div>
+
+            <form class="form-grid" onsubmit="event.preventDefault();">
+                <!-- Inline HTML Attributes for Keyboard Events -->
+                <div class="input-box">
+                    <label for="fname">First Name (onkeydown)</label>
+                    <input type="text" id="fname" placeholder="Press any key..." onkeydown="handleKeyDown(event)">
+                </div>
+
+                <div class="input-box">
+                    <label for="lname">Last Name (onkeyup)</label>
+                    <input type="text" id="lname" placeholder="Release any key..." onkeyup="handleKeyUp(event)">
+                </div>
+
+                <div class="input-box">
+                    <label for="fathername">Father's Name (onkeypress)</label>
+                    <input type="text" id="fathername" placeholder="Type character..." onkeypress="handleKeyPress(event)">
+                </div>
+
+                <div class="input-box">
+                    <label for="dob">Date of Birth (oninput)</label>
+                    <input type="text" id="dob" placeholder="Type or paste..." oninput="handleInput(event)">
+                </div>
+
+                <div class="input-box">
+                    <label for="mobile">Mobile Number (Enter key check)</label>
+                    <input type="tel" id="mobile" placeholder="Press Enter key..." onkeydown="handleEnterKey(event)">
+                </div>
+
+                <div class="input-box">
+                    <label for="email">Email-Id (All Keyboard Events via AddEventListener)</label>
+                    <input type="email" id="email" placeholder="Monitored by JS event listeners">
+                </div>
+
+                <div class="action-buttons">
+                    <button type="submit" class="btn-submit" style="background-color: green;">Submit Records</button>
+                    <button type="reset" class="btn-reset" style="background-color: red;">Reset</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <script>
+        // Syntax note: Syntax error fix - removed stray '3' before script body
+
+        // 1. Triggered on Key Down
+        function handleKeyDown(event) {
+            alert(
+                "=== KEYDOWN EVENT ===\n" +
+                "Key: " + event.key + "\n" +
+                "Code: " + event.code + "\n" +
+                "Value in box BEFORE key lands: '" + event.target.value + "'"
+            );
+        }
+
+        // 2. Triggered on Key Up
+        function handleKeyUp(event) {
+            alert(
+                "=== KEYUP EVENT ===\n" +
+                "Key: " + event.key + "\n" +
+                "Code: " + event.code + "\n" +
+                "Value in box AFTER key released: '" + event.target.value + "'"
+            );
+        }
+
+        // 3. Triggered on Key Press (Printable character keys only)
+        function handleKeyPress(event) {
+            alert(
+                "=== KEYPRESS EVENT (Deprecated) ===\n" +
+                "Character: " + event.key + "\n" +
+                "Note: Non-printable keys like Shift/Backspace won't trigger this!"
+            );
+        }
+
+        // 4. Triggered on Input modification (typing/pasting)
+        function handleInput(event) {
+            alert(
+                "=== INPUT EVENT ===\n" +
+                "Current input field value: '" + event.target.value + "'\n" +
+                "Note: Triggers on typing, pasting, or dragging text!"
+            );
+        }
+
+        // 5. Specific Key Detection (e.g., detecting Enter key)
+        function handleEnterKey(event) {
+            if (event.key === "Enter") {
+                event.preventDefault(); // Prevents auto-form submission
+                alert("=== ENTER KEY DETECTED ===\nYou pressed Enter inside Mobile field!");
+            }
+        }
+
+        // 6. Attaching dynamic event listeners to the Email input
+        const emailInput = document.getElementById("email");
+
+        emailInput.addEventListener("keydown", (e) => {
+            alert(
+                "=== EMAIL FIELD: KEYDOWN ===\n" +
+                "Key: " + e.key + "\n" +
+                "Code: " + e.code
+            );
+        });
+
+        emailInput.addEventListener("keyup", (e) => {
+            alert(
+                "=== EMAIL FIELD: KEYUP ===\n" +
+                "Key: " + e.key
+            );
+        });
+
+        emailInput.addEventListener("input", (e) => {
+            alert(
+                "=== EMAIL FIELD: INPUT ===\n" +
+                "New Value: " + e.target.value
+            );
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marks Calculator</title>
+    <script>
+        let username = prompt("Please enter your name");
+        let num1 = parseFloat(prompt("Enter marks of subject 1"));
+        let num2 = parseFloat(prompt("Enter marks of subject 2"));
+       <select id="operation">
+    <option value="add">Addition</option>
+    <option value="subtract">Subtraction</option>
+    <option value="multiply">Multiplication</option>
+    <option value="divide">Division</option>
+</select>
+        let result;
+
+        if (op === "add") {
+            result = num1 + num2;
+        } else if (op === "multiply") {
+            result = num1 * num2;
+        } else if (op === "divide") {
+            result = num2 !== 0 ? num1 / num2 : "Cannot divide by zero";
+        } else if (op === "subtract") {
+            result = num1 - num2;
+        } else {
+            result = "Please enter a valid choice";
+        }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #333;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        h1 {
+            color: #4a3f89;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .output-box {
+            background: #f4f6f9;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 0.75rem 0;
+            font-size: 1.1rem;
+            border-left: 5px solid #667eea;
+            text-align: left;
+        }
+
+        .result-highlight {
+            font-weight: bold;
+            color: #2e225e;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1>Calculation Results</h1>
+        <div class="output-box">
+            <strong>User:</strong> <span id="user-display"></span>
+        </div>
+        <div class="output-box">
+            <strong>Operation:</strong> <span id="op-display"></span>
+        </div>
+        <div class="output-box">
+            <strong>Result:</strong> <span class="result-highlight" id="result-display"></span>
+        </div>
+    </div>
+
+    <script>
+        // Dynamically inject user variables into the HTML layout
+        document.getElementById("user-display").innerText = username || "Guest";
+        document.getElementById("op-display").innerText = op || "None";
+        document.getElementById("result-display").innerText = result !== undefined ? result : "No calculation performed";
+    </script>
+
+</body>
+</html>
+    

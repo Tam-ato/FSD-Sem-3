@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mouse Events</title>
+    <style>
+    body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(3, 200px);
+        gap: 15px;
+    }
+
+    .grid-container > div {
+        height: 100px;
+        width: 200px;
+        border: 2px solid black;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+
+    #box1 { background-color: greenyellow; }
+    #box2 { background-color: maroon; color: white; } /* Text color set to white for readability */
+    #box3 { background-color: violet; }
+    #box4 { background-color: chocolate; }
+    #box5 { background-color: lightblue; }
+    #box6 { background-color: gold; }
+    #box7 { background-color: pink; }
+</style>
+</head>
+<body>
+    <div class="grid-container">
+        <div id="box1" onclick="eventcall()">Click Me!(onclick-leftclick)</div>
+        <div id="box2" ondblclick="eventcall1()">Click Me!(doubleclick)</div>
+        <div id="box3" onmouseout="eventcall2()">Click Me!(outsidethisbox)</div>
+        <div id="box4" onmouseover="eventcall3()">Click Me!(hoveroverthisbox)</div>
+        <div id="box5" oncontextmenu="eventcall4()">Click Me!(oversomecontext-rightclick)</div>
+        <div id="box6" onmousedown="eventcall5()">Click Me!(clickdown)</div>
+        <div id="box7" onmouseup="eventcall6()">Click Me!(clickup)</div>
+    </div>
+
+    <script>
+        function eventcall() { alert("Mouse Event 1"); }
+        function eventcall1() { alert("Mouse Event 1 (dblclick)"); }
+        function eventcall2() { alert("Mouse Event 2"); }
+        function eventcall3() { alert("Mouse Event 3"); }
+        function eventcall4() { alert("Mouse Event 4"); }
+        function eventcall5() { alert("Mouse Event 5"); }
+        function eventcall6() { alert("Mouse Event 6"); }
+    </script>
+</body>
+</html>
