@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Keyboard Events Demonstration</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f5f7;
+            padding: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .description {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        /*
+        Each form demonstrates one event
+        */
+
+        form {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            border: 2px solid #ddd;
+
+            transition: background-color 0.2s ease;
+        }
+
+        h2 {
+            margin-bottom: 8px;
+        }
+
+        p {
+            margin-bottom: 12px;
+            color: #555;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #aaa;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        input:focus {
+            outline: none;
+            border: 2px solid #333;
+        }
+
+        .status {
+            margin-top: 10px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+<div class="container">
+
+    <h1>Keyboard Events Demonstration</h1>
+
+    <p class="description">
+        Type inside each box and observe the form background.
+    </p>
+
+
+    <!-- ================================================= -->
+    <!-- 1. KEYDOWN -->
+    <!-- ================================================= -->
+
+    <form id="keydownForm">
+
+        <h2>1. onkeydown</h2>
+
+        <p>
+            Background changes when a key is pressed.
+        </p>
+
+        <input
+            type="text"
+            placeholder="Type a color name..."
+            onkeydown="
+                document.getElementById('keydownForm').style.background = this.value
+            "
+        >
+
+        <div class="status">
+            Event: KEYDOWN
+        </div>
+
+    </form>
+
+
+    <!-- ================================================= -->
+    <!-- 2. KEYUP -->
+    <!-- ================================================= -->
+
+    <form id="keyupForm">
+
+        <h2>2. onkeyup</h2>
+
+        <p>
+            Background changes when the key is released.
+        </p>
+
+        <input
+            type="text"
+            placeholder="Type a color name..."
+            onkeyup="
+                document.getElementById('keyupForm').style.background = this.value
+            "
+        >
+
+        <div class="status">
+            Event: KEYUP
+        </div>
+
+    </form>
+
+
+    <!-- ================================================= -->
+    <!-- 3. KEYPRESS -->
+    <!-- ================================================= -->
+
+    <form id="keypressForm">
+
+        <h2>3. onkeypress</h2>
+
+        <p>
+            Background changes when a character key is pressed.
+        </p>
+
+        <input
+            type="text"
+            placeholder="Type a color name..."
+            onkeypress="
+                document.getElementById('keypressForm').style.background = this.value
+            "
+        >
+
+        <div class="status">
+            Event: KEYPRESS
+        </div>
+
+    </form>
+
+
+    <!-- ================================================= -->
+    <!-- 4. INPUT -->
+    <!-- ================================================= -->
+
+    <form id="inputForm">
+
+        <h2>4. oninput</h2>
+
+        <p>
+            Background changes whenever the input value changes.
+        </p>
+
+        <input
+            type="text"
+            placeholder="Type a color name..."
+            oninput="
+                document.getElementById('inputForm').style.background = this.value
+            "
+        >
+
+        <div class="status">
+            Event: INPUT
+        </div>
+
+    </form>
+
+
+    <!-- ================================================= -->
+    <!-- 5. ENTER KEY -->
+    <!-- ================================================= -->
+
+    <form id="enterForm">
+
+        <h2>5. Enter Key Detection</h2>
+
+        <p>
+            Type a color and press Enter.
+        </p>
+
+        <input
+            type="text"
+            id="enterInput"
+            placeholder="Type a color and press Enter..."
+        >
+
+        <div
+            id="enterStatus"
+            class="status">
+            Event: Waiting for Enter
+        </div>
+
+    </form>
+
+
+    <!-- ================================================= -->
+    <!-- 6. ADD EVENT LISTENER -->
+    <!-- ================================================= -->
+
+    <form id="listenerForm">
+
+        <h2>6. addEventListener()</h2>
+
+        <p>
+            Keyboard events attached using JavaScript.
+        </p>
+
+        <input
+            type="text"
+            id="listenerInput"
+            placeholder="Type a color name..."
+        >
+
+        <div
+            id="listenerStatus"
+            class="status">
+            Event: Waiting...
+        </div>
+
+    </form>
+
+</div>
+
+
+<script>
+
+
+/* =========================================================
+   5. ENTER KEY
+   ========================================================= */
+
+const enterInput =
+    document.getElementById("enterInput");
+
+
+enterInput.addEventListener(
+    "keydown",
+    function (event) {
+
+        if (event.key === "Enter") {
+
+            event.preventDefault();
+
+            document.getElementById("enterForm")
+                .style.background = this.value;
+
+            document.getElementById("enterStatus")
+                .innerText =
+                "ENTER PRESSED → Color: " + this.value;
+        }
+
+    }
+);
+
+
+
+/* =========================================================
+   6. ADD EVENT LISTENER
+   ========================================================= */
+
+const listenerInput =
+    document.getElementById("listenerInput");
+
+/* ---------------- KEYDOWN ---------------- */
+listenerInput.addEventListener(
+    "keydown",
+    function (event) {
+
+        document.getElementById("listenerForm")
+            .style.background = this.value;
+
+        document.getElementById("listenerStatus")
+            .innerText =
+            "KEYDOWN → Key: " + event.key;
+    }
+);
+/* ---------------- KEYUP ---------------- */
+listenerInput.addEventListener(
+    "keyup",
+    function (event) {
+
+        document.getElementById("listenerForm")
+            .style.background = this.value;
+
+        document.getElementById("listenerStatus")
+            .innerText =
+            "KEYUP → Key: " + event.key;
+    }
+);
+/* ---------------- INPUT ---------------- */
+
+listenerInput.addEventListener(
+    "input",
+    function (event) {
+
+        document.getElementById("listenerForm")
+            .style.background = this.value;
+
+        document.getElementById("listenerStatus")
+            .innerText =
+            "INPUT → Value: " + this.value;
+    }
+);
+</script>
+</body>
+</html>

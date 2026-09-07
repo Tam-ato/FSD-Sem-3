@@ -54,3 +54,4 @@ function displayData() {
 getData();
 calculateTotal();
 displayData();
+ 
