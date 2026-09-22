@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <style>
+       .form-grid{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+       }
+       .input-box{
+        display: flex;
+        flex-direction: column;
+       }
+       .input-selection{
+        display: flex; 
+        flex-direction: column;
+        gap: 10px;
+       }
+    </style>
+</head>
+<body>
+    <div class="page-container">
+    <h1>Techio</h1>
+    <div class="form-container">
+      <form class="form-grid">
+                <div class="input-box">
+                    <label for="fname">First Name:</label>
+                    <input type="text" id="fname" placeholder="Enter first name" required>
+                </div>
+
+                <div class="input-box">
+                    <label for="lname">Last Name:</label>
+                    <input type="text" id="lname" placeholder="Enter last name" required>
+                </div>
+
+                
+                <div class="input-box" style="grid-column: span 2">
+                    <label for="roll_No">Roll No:</label>
+                    <input type="number" id="roll_No" placeholder="Enter your roll no." required>
+                </div>
+
+                <div class="input-selection" style="grid-column: span 2">
+                    <label for="section"> Section:</label>
+                   
+<label>
+  <input type="radio" name="section" value="A"> Section A
+</label>
+
+<label>
+  <input type="radio" name="section" value="B"> Section B
+</label>
+
+<label>
+  <input type="radio" name="section" value="C"> Section C
+</label>
+                </div>
+    <button type="submit"> Start Quiz </button>
+
+    </div>
+    </div>
+</body>
+</html>
